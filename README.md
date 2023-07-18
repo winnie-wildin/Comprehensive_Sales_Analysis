@@ -1,5 +1,6 @@
 # Comprehensive_Sales_Analysis
-Analyzing a sales dataset to answer a few business questions
+Analyzing a sales dataset to answer a few business questions.
+- Jupyter notebook: **Sales Insights_A Comprehensive Sales Analysis.ipynb**
 # Table of contents
 1. [Introduction](#introduction)
 
@@ -15,10 +16,11 @@ Analyzing a sales dataset to answer a few business questions
     4. [Is there a noticeable difference in product prices during peak hours or specific days?](#sec3p4)
     5. [What is the correlation between quantity ordered and sales revenue?](#sec3p5)
     6. [How does the Price of Each Item and the Quantity Ordered Influence Sales?](#sec3p6)
+    7. [Price Elasticity](#sec3p7)
     
 4. [Conclusion](#conclusion)
 
-9. [References](#references)
+5. [References](#references)
 
 ## 1. Introduction <a name="introduction"></a>
 - This README describes work done on the sales data sets. Resources used include Python and associated packages Jupyter, Pandas, Numpy, matplotlib, Seaborn, statsmodels.
@@ -35,15 +37,16 @@ The data in the sales data sets was gathered over a period of 12 months in 2019.
 The original data was spread out in twelve csv files for each month. Therefore, I had to consolidate all of them into a single comprehensive csv file for further analysis or processing. Through a loop, each CSV file was read using pandas and appended to the "all_months_data" DataFrame. Conversely, if the output file already existed, the process was skipped and a message was printed accordingly.
 The very first step is always to check if the data needs cleaning by looking for duplicate rows, zero values or NaNs where they shouldn't be, etc. The head of the data set looks like:
 
-![head](images/head.JPG)
+![head](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/4db9b700-f21a-4fee-b59c-9af9c155b37a)
+
 
 ### 2.2 Data preprocessing: Cleaning and Filtering <a name="sec2p2"></a>
 Pandas **info()** can provide a concise summary of a DataFrame. It displays information about the DataFrame's structure, including the number of rows and columns, column names, data types of columns, and the amount of non-null values in each column. It also provides an estimate of the memory usage of the DataFrame. The output of pandas **info()**before and after the cleaning is shown below. Here, all columns of the DataFrame are included in the analysis.
 
-![describeAll](images/describeAll.JPG)
+![info_before](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/ff01cf8a-2a02-4a0f-8e27-9b85bcedcf0b)
 
+![info_after](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/a0727842-e08e-4a12-99f5-8b6108f232e7)
 
-![tipVSbill](images/tipVSbill.png)
 
 ### 2.3 Data preprocessing: Transformation and Restructuring <a name="sec2p3"></a>
 Several transformations were performed on the DataFrame, resulting in the creation of a modified DataFrame named df_modified. The following actions were carried out to derive a more informative and structured dataset:
@@ -59,6 +62,9 @@ Several transformations were performed on the DataFrame, resulting in the creati
 - To eliminate redundancy and reduce unnecessary information, the 'purchase_address' and 'order_date' columns were removed since the relevant details were already extracted and stored in separate columns.
 
 - Finally, the index of the DataFrame was reset to ensure a consistent and sequential numbering of rows.
+![df_before_transformation](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/f5e3c05e-5aa0-48b2-9854-383fd50a143d)
+
+![df_after_transformation](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/72c32840-5992-44a2-b977-173949106b1a)
 
 ## 3. The Code explained <a name="section3"></a>
 I have tried to explain the intuition behind the code and visualizations. To learn about the final answers to these questions, kindly refer to the notebook.
@@ -72,7 +78,7 @@ I have tried to explain the intuition behind the code and visualizations. To lea
 
 - The horizontal bar chart is created by using the **plt.barh()** function from Matplotlib. The chart's horizontal bars represent the products, while their lengths correspond to the respective quantity_ordered values
 
-![Pairplot](images/Pairplot.png)
+
 
 ### 3.2 Which month had the highest sales and which had the lowest sales? <a name="sec3p2"></a>
 
@@ -110,7 +116,7 @@ To identify the month with the highest sales and lowest sales, I used the **idxm
 - Using the seaborn library, the 'sns.scatterplot()' function generated the scatter plot.It shows the correlation between two continuous variables because it visually displays the individual data points, helps identify patterns or trends, and assesses linearity or outliers in the relationship.
 
 
-### 3.6 How does the Price of Each Item and the Quantity Ordered Influence Sales? <a name="sec3p6>"</a>
+### 3.6 How does the Price of Each Item and the Quantity Ordered Influence Sales? <a name="sec3p6"></a>
 - I conducted a multiple linear regression analysis to examine the relationship between the predictors, namely 'price_each' and 'quantity_ordered', and the target variable 'sales'. I defined the 'X' variable as a DataFrame consisting of these predictors and set 'y' as the 'sales' variable.
 
 - To ensure an intercept is included in the regression model, I added a constant term using the **sm.add_constant(X)** function.
@@ -121,7 +127,7 @@ To identify the month with the highest sales and lowest sales, I used the **idxm
 
 - To provide a comprehensive summary of the regression analysis, I utilized the **print(results.summary())** statement. This summary encompassed crucial statistical measures, such as coefficients, standard errors, p-values, and the R-squared value, among others.
 
-### 3.7 Price Elasticity <a name="sec3p7>"</a>
+### 3.7 Price Elasticity <a name="sec3p7"></a>
 - I performed an analysis to calculate the price elasticity of the quantity_ordered variable based on the 'price_each' and 'quantity_ordered' columns in the 'df_modified' DataFrame.
 
 - Using the regression model, I obtained the **intercept** and **slope coefficients**.
@@ -138,4 +144,31 @@ The main findings of this analysis are:
 3. Price Variations by Time of Day
 4. Quantity-Sales Relationship
 5. Price Elasticity Analysis
-## 7. References <a name="references"></a>
+   
+## 5. References <a name="references"></a>
+- [1] Python Software Foundation
+https://www.python.org/
+
+- [2] Project Jupyter
+https://jupyter.org/
+
+- [3] seaborn: statistical data visualization
+https://seaborn.pydata.org/index.html#
+
+- [4] matplotlib: Python plotting library
+https://matplotlib.org/
+
+- [5] statsmodels: Statistics in Python
+https://www.statsmodels.org/stable/index.html
+
+- [6] Ordinary Least Squares in statsmodels
+https://www.statsmodels.org/dev/examples/notebooks/generated/ols.html
+
+- [7] Keith Galli's YT Channel
+https://www.youtube.com/channel/UCq6XkhO5SZ66N04IcPbqNcw
+
+
+<details><summary>👇click me</summary>
+![mika-noah](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/e6a6c859-ad46-4d4c-b442-01c7a08bade6)
+
+</details>
