@@ -167,8 +167,6 @@ https://www.statsmodels.org/dev/examples/notebooks/generated/ols.html
 - [7] Keith Galli's YT Channel
 https://www.youtube.com/channel/UCq6XkhO5SZ66N04IcPbqNcw
 
-
-<details><summary>👇click me</summary>
 ![mika-noah](https://github.com/winnie-wildin/Comprehensive_Sales_Analysis/assets/110402296/e6a6c859-ad46-4d4c-b442-01c7a08bade6)
 
-</details>
+
